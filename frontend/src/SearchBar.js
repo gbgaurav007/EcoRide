@@ -80,10 +80,10 @@ function SearchBar({ searchRides }) {
             leavingFrom,
             goingTo,
             date,
-            passengers
+            NumberOfpassengers: passengers
         };
 
-        console.log(rideDetails);
+
 
         if(!leavingFrom || !goingTo){
             alert('Please fill all the fields');

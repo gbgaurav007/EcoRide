@@ -23,17 +23,14 @@ const generateSecretKey = () => {
     return secretKey;
 }
 
-
 const SECRET_KEY = generateSecretKey();
 console.log('Generated Secret Key:', SECRET_KEY);
-
 
 mongoose.connect('mongodb://127.0.0.1:27017/EcoRide');
 const db = mongoose.connection;
 db.once('open', () => {
     console.log('DB Connected...');
 })
-
 
 const User = mongoose.model('User', {
     name: String,
@@ -120,8 +117,6 @@ app.post('/register', async (req, res) => {
 })
 
 
-
-
 app.post('/login', async (req, res) => {
 
     try {
@@ -148,7 +143,6 @@ app.post('/login', async (req, res) => {
         res.status(500).json(error)
     }
 })
-
 
 
 app.get('/logout', (req, res) => {

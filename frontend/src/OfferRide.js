@@ -6,6 +6,7 @@ import { IoLocationOutline, IoCalendarOutline, IoTimeOutline, IoPersonOutline, I
 import { CiCirclePlus, CiCircleMinus, CiUser } from "react-icons/ci";
 import { LiaCarSideSolid, LiaAngleDoubleRightSolid } from "react-icons/lia";
 import './App.css';
+import API_BASE_URL from './ApiBaseURL';
 
 const places = [
     "Elante Mall", "Sector 17", "Rock Garden", "Tribune Chowk", "ISBT 43", "PEC",
@@ -210,20 +211,20 @@ function OfferRide({userData}) {
         }
 
         const driverCarName = userData.carName;
-        const driverCarNo = userData.carNo;
+        const driverCarNumber = userData.carNumber;
 
         const rideDetails = {
-            driverCarName,
-            driverCarNo,
+            driverCarName: driverCarName,
+            driverCarNumber: driverCarNumber,
             leavingFrom,
             goingTo,
             date,
             time,
-            passengers,
+            NumberOfpassengers: passengers,
             price
         };
 
-        fetch('http://localhost:3000/createRide', {
+        fetch(`${API_BASE_URL}rides/publishRide`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -233,11 +234,11 @@ function OfferRide({userData}) {
         })
             .then(response => response.json())
             .then(data => {
-                if (data.code === 201) {
+                if (data.statusCode === 201) {
                     alert('Ride created successfully!');
                 }
                 else {
-                    console.error('Failed:', data.msg);
+                    console.error('Failed:', data.message);
                     alert('Error creating post');
                 }
             })

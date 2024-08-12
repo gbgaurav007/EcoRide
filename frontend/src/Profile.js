@@ -6,6 +6,7 @@ import { MdEmail } from "react-icons/md";
 import { FaPhone } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
+import API_BASE_URL from './ApiBaseURL';
 
 function Profile({ userData }) {
 
@@ -13,17 +14,17 @@ function Profile({ userData }) {
 
     const handleLogout = () => {
 
-        fetch('http://localhost:3000/logout', {
-            method: 'GET',
+        fetch(`${API_BASE_URL}users/logout`, {
+            method: 'POST',
             credentials: 'include',
         })
             .then(response => response.json())
             .then(data => {
-                if (data.code === 200) {
+                if (data.statusCode === 200) {
                     alert('Logout successful');
                     navigate('/');
                 } else {
-                    console.error('Logout failed:', data.msg);
+                    console.error('Logout failed:', data.message);
                 }
             })
             .catch(error => console.error('Error logging out:', error));

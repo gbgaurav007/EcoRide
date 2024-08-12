@@ -5,6 +5,7 @@ import RideDetails from "./RideDetails";
 import { IoTimeOutline } from "react-icons/io5";
 import { TbStackPush, TbStackPop } from "react-icons/tb";
 import { MdPersonAddAlt } from "react-icons/md";
+import API_BASE_URL from './ApiBaseURL';
 
 function Search() {
 
@@ -18,7 +19,7 @@ function Search() {
         setSearchPerformed(true);
 
         try {
-            const response = await fetch('http://localhost:3000/searchRides', {
+            const response = await fetch(`${API_BASE_URL}rides/searchRides`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -27,11 +28,12 @@ function Search() {
                 credentials: 'include'
             });
             const data = await response.json();
-            if (data.code === 200) {
-                setRides(data.rides);
-                setOriginalRides([...data.rides]);
+
+            if (data.statusCode === 200) {
+                setRides(data.data);
+                setOriginalRides([...data.data]);
             } else {
-                console.error('Failed to fetch rides:', data.msg);
+                console.error('Failed to fetch rides:', data.message);
             }
         } catch (error) {
             console.error('Error fetching rides:', error);

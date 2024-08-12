@@ -5,7 +5,6 @@ import { useRides } from './RidesContext';
 
 function RideDetails({ ride }) {
 
-    const imgPath = `livePhoto-${ride.driverContact}.jpeg`;
     const { bookRide } = useRides();
 
     function handleBookRide(){
@@ -43,7 +42,7 @@ function RideDetails({ ride }) {
                     </div>
                     <div className="md:flex justify-between">
                         <div className="flex md:py-4 mt-4">
-                            <img src={imgPath} className="h-20 w-20 rounded-full" />
+                            <img src={ride.driverPhoto} className="h-20 w-20 rounded-full" />
                             <div className="flex-col p-4">
                                 <p>{ride.driverName}</p>
                                 <div className="flex text-gray-800">
@@ -55,7 +54,7 @@ function RideDetails({ ride }) {
                             <FaCarRear className="mr-4 text-5xl" />
                             <div className="flex-col">
                                 <div>{ride.driverCarName}</div>
-                                <div>{ride.driverCarNo}</div>
+                                <div>{ride.driverCarNumber}</div>
                             </div>
                         </div>
                     </div>

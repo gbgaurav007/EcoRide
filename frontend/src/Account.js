@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import './App.css';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useRides } from './RidesContext';
+import API_BASE_URL from './ApiBaseURL';
 
 const Account = ({ onLogin }) => {
     const [isLogin, setIsLogin] = useState(true);
@@ -21,12 +22,14 @@ const Account = ({ onLogin }) => {
     };
 
     const { resetRides } = useRides();
+    
+   
 
     const handleLogin = () => {
 
         resetRides();
 
-        fetch('http://localhost:3000/login', {
+        fetch(`${API_BASE_URL}users/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -37,15 +40,15 @@ const Account = ({ onLogin }) => {
             .then(response => response.json())
             .then(data => {
                 console.log('Login response:', data);
-                if (data.code === 200) {
-                    const userData = { email: formData.email, name: data.user.name, contact: data.user.contact, isDriver: data.user.isDriver, carName: data.user.driverVerification.carName, carNo: data.user.driverVerification.carNo, livePhoto: data.user.driverVerification.livePhoto };
+                if (data.statusCode === 200) {
+                    const userData = { email: data.data.user.email, name: data.data.user.name, contact: data.data.user.contact, isDriver: data.data.user.isDriver ,  carName: data.data.user.driverVerification.carName, carNumber: data.data.user.driverVerification.carNumber, livePhoto: data.data.user.driverVerification.livePhoto, savedRides:[data.data.user.savedRides] };
                     onLogin(userData);
                     alert('Login successful');
-                } else if (data.code === 401) {
+                } else if (data.statusCode === 401) {
                     alert('Invalid Credentials. Please try again')
                 }
                 else {
-                    console.error('Login failed:', data.msg);
+                    console.error('Login failed:', data.message);
                     alert('Error logging into account');
                 }
             })
@@ -57,7 +60,7 @@ const Account = ({ onLogin }) => {
 
         e.preventDefault();
 
-        fetch('http://localhost:3000/register', {
+        fetch(`${API_BASE_URL}users/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -67,13 +70,14 @@ const Account = ({ onLogin }) => {
         })
             .then(response => response.json())
             .then(data => {
-                if (data.code === 201) {
+                console.log('Registration response:', data); 
+                if (data.statusCode === 201) {
                     alert('Signup Successful')
-                } else if (data.code === 409) {
+                } else if (data.statusCode === 409) {
                     alert('Username already exists. Please choose a different username.');
                 }
                 else {
-                    console.error('Registration failed:', data.msg);
+                    console.error('Registration failed:', data.message);
                 }
             })
             .catch(error => console.error('Error registering:', error));
@@ -128,13 +132,11 @@ const Account = ({ onLogin }) => {
     return (
         <div className="flex flex-col">
             <div><Navbar /></div>
-
             <div id="account" className="flex flex-col md:flex-row mt-20 md:ml-10">
                 <div>
                     <h1 className="text-3xl font-bold md:mt-10 mt-10 ml-5 md:ml-12 text-slate-800">Share the Ride! <br />&emsp;&emsp;&emsp;Share the Journey!</h1>
                     <img src="acc.jpg" alt='logo' className="w-auto h-50 md:w-auto md:h-80 mx-auto md:ml-12 mt-4 md:mt-8" />
                 </div>
-
                 <div className="w-3/4 md:w-1/4 md:mt-10 flex flex-col md:ml-20 ml-8 md:py-10">
 
                     <h2 className="text-xl mb-4">{isLogin ? 'Login' : 'Sign Up'}</h2>

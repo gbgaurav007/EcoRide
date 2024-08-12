@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Home from './Home';
 import Search from './Search';
 import OfferRide from './OfferRide';
@@ -12,28 +12,43 @@ import Verification from './Verification';
 function App() {
 
   const [userData, setUserData] = useState(null);
+  const [isDriverVerified, setIsDriverVerified] = useState(false);
 
   const navigate = useNavigate();
 
   const handleLogin = (userData) => {
     setUserData(userData);
-    console.log("userData", userData);
     navigate('/');
   }
-
+  
   const handleProfileVerification = (details) => {
     if (userData) {
-      setUserData({ ...userData, isDriver: true, carName: details.carName, carNo: details.carNo, livePhoto: details.livePhoto });
+      const updatedUserData = {
+        ...userData,
+        isDriver: true,
+        carName: details.carName,
+        carNumber: details.carNumber,
+        driverPhoto: details.driverPhoto
+      };
+      setUserData(updatedUserData);
+      setIsDriverVerified(true);
       navigate('/offer');
     }
-
   }
+
+  useEffect(() => {
+    if (userData && userData.isDriver) {
+      setIsDriverVerified(true);
+    }
+  }, [userData]);
 
   const determineOfferElement = () => {
     if (userData) {
-      return userData.isDriver ? <OfferRide userData={userData}/> : <Verification onVerify={handleProfileVerification} />;
+      return isDriverVerified ? <OfferRide userData={userData}/> : <Verification onVerify={handleProfileVerification} />;
     }
+    return <Verification onVerify={handleProfileVerification} />;
   };
+
 
   return (
     <div className="App">
