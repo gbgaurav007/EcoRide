@@ -215,8 +215,7 @@ const verifyDriver = asyncHandler(async (req, res) => {
   const { carName, carNumber } = req.body;
 
   const livePhotoPath = req.files["livePhoto"]
-    ? req.files["livePhoto"][0].path
-    : null;
+    ? req.files["livePhoto"][0].path : null;
 
   if (!carNumber || !carName || !livePhotoPath) {
     throw new ApiError(400, "All verification fields are required");

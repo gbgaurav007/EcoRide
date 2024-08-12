@@ -27,7 +27,7 @@ function RideDetails({ ride }) {
                                 <p className="text-lg font-bold">Rs. {ride.price}</p>&nbsp;
                                 <p>/seat</p></div>
                             <div>
-                                <div>{ride.passengers} seats available</div>
+                                <div>{ride.NumberOfpassengers} seats available</div>
                             </div>
                         </div>
                     </div>
