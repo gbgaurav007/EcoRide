@@ -24,6 +24,7 @@ function Profile({ userData }) {
           alert("Logout successful");
           Cookies.remove("accessToken");
           Cookies.remove("refreshToken");
+          window.location.reload();
           navigate("/");
         } else {
           console.error("Logout failed:", data.message);
