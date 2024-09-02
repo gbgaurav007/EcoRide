@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import Navbar from "./Navbar";
+import Cookies from 'js-cookie';
 import "./App.css";
 // import { useNavigate } from "react-router-dom";
 import API_BASE_URL from "./ApiBaseURL";
@@ -44,6 +45,7 @@ const Verification = ({ onVerify }) => {
 
     try {
       const response = await fetch(`${API_BASE_URL}users/verifyDriver`, {
+        headers: {Authorization: `Bearer ${Cookies.get("accessToken")}`},
         method: "POST",
         body: newData,
         credentials: "include",

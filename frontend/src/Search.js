@@ -6,6 +6,7 @@ import { IoTimeOutline } from "react-icons/io5";
 import { TbStackPush, TbStackPop } from "react-icons/tb";
 import { MdPersonAddAlt } from "react-icons/md";
 import API_BASE_URL from './ApiBaseURL';
+import Cookies from "js-cookie";
 
 function Search() {
 
@@ -23,6 +24,7 @@ function Search() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    Authorization: `Bearer ${Cookies.get("accessToken")}`,
                 },
                 body: JSON.stringify(rideDetails),
                 credentials: 'include'

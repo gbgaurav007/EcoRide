@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import Cookies from "js-cookie";
 import { GrMoney, GrSecure, GrUserExpert } from "react-icons/gr";
 import { IoLocationOutline, IoCalendarOutline, IoTimeOutline, IoPersonOutline, IoPricetagOutline } from "react-icons/io5";
 import { CiCirclePlus, CiCircleMinus, CiUser } from "react-icons/ci";
@@ -228,6 +229,7 @@ function OfferRide({userData}) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                Authorization: `Bearer ${Cookies.get("accessToken")}`,
             },
             body: JSON.stringify(rideDetails),
             credentials: 'include',
