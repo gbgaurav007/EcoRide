@@ -55,7 +55,7 @@ const userSchema = new Schema(
     savedRides: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Rides",
+        ref: "Ride",
         default: null,
       },
     ],
