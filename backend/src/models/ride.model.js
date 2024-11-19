@@ -43,12 +43,12 @@ const rideSchema = new Schema(
       required: true,
       min: 0,
     },
-    // passengers: [
-    //   {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: "User",
-    //   },
-    // ],
+    people: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
   },
   { timestamps: true }
 );
