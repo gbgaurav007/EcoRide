@@ -1,16 +1,14 @@
 import React from "react";
-import Navbar from "./Navbar";
+import Navbar from "../components/Navbar";
 import { SlUser } from "react-icons/sl";
 import { CiCirclePlus } from "react-icons/ci";
 import { MdEmail } from "react-icons/md";
 import { FaPhone } from "react-icons/fa6";
-import { useNavigate } from "react-router-dom";
-import Footer from "./Footer";
-import API_BASE_URL from "./ApiBaseURL";
+import Footer from "../components/Footer";
+import API_BASE_URL from "../ApiBaseURL";
 import Cookies from "js-cookie";
 
-function Profile({ userData }) {
-  const navigate = useNavigate();
+function Profile({ userData, onLogout }) {
 
   const handleLogout = () => {
     fetch(`${API_BASE_URL}users/logout`, {
@@ -24,8 +22,7 @@ function Profile({ userData }) {
           alert("Logout successful");
           Cookies.remove("accessToken");
           Cookies.remove("refreshToken");
-          window.location.reload();
-          navigate("/");
+          onLogout();
         } else {
           console.error("Logout failed:", data.message);
         }
@@ -35,9 +32,6 @@ function Profile({ userData }) {
 
   return (
     <div className="flex flex-col">
-      <div>
-        <Navbar />
-      </div>
       <div className="bg-white h-20"></div>
 
       {userData ? (

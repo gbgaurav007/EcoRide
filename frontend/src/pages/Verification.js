@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
-import Navbar from "./Navbar";
-import Cookies from 'js-cookie';
-import "./App.css";
+import Navbar from "../components/Navbar";
+import '../App.css';
 // import { useNavigate } from "react-router-dom";
-import API_BASE_URL from "./ApiBaseURL";
+import API_BASE_URL from "../ApiBaseURL";
+import Cookies from "js-cookie";
 
 const Verification = ({ onVerify }) => {
   // const navigate = useNavigate();
@@ -148,7 +148,6 @@ useEffect(() => {
 
   return (
     <div className="flex flex-col mb-20" id="verify">
-      <Navbar />
       <div className="flex flex-col md:flex-row mt-20 md:ml-10">
         <div className="flex-col">
           <h1 className="text-3xl font-bold md:mt-10 mt-10 ml-5 md:ml-12 text-slate-800">
@@ -158,7 +157,7 @@ useEffect(() => {
             YOU'RE JUST ONE STEP AWAY!!
           </h2>
           <img
-            src="ver.png"
+            src="assets/ver.png"
             alt="logo"
             className="w-auto h-45 md:w-auto md:h-80 mt-4 md:mt-8"
           />

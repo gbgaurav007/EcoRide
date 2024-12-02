@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
-import Navbar from "./Navbar";
-import { useRides } from './RidesContext';
-import BookedRide from "./BookedRide";
+import Navbar from "../components/Navbar";
+import { useRides } from '../context/RidesContext';
+import BookedRide from "../components/BookedRide";
 
 function MyRides() {
 
@@ -13,7 +13,6 @@ function MyRides() {
 
     return (
         <div className="flex flex-col text-center">
-            <div><Navbar /></div>
             <div className="bg-white h-10"></div>
 
             {bookedRides.length > 0 ? (
@@ -30,7 +29,7 @@ function MyRides() {
             ) : (
 
                 <div className="flex flex-col text-center md:mt-10">
-                    <img src="mr.jpg" alt="img" className="h-60 w-60 mt-5 mx-auto" />
+                    <img src="assets/mr.jpg" alt="img" className="h-60 w-60 mt-5 mx-auto" />
                     <h1 className="text-4xl text-slate-700 font-bold mt-5">Your future travel plans will appear here!</h1>
                 </div>
 

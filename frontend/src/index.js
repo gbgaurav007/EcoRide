@@ -4,13 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import { RidesProvider } from "./RidesContext";
+import { RidesProvider } from "./context/RidesContext";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <RidesProvider>
     <App />
+    <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} />
     </RidesProvider>
   </BrowserRouter>
 );

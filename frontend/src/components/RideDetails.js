@@ -1,7 +1,7 @@
 import React from "react";
 import { FaPhone, FaCarRear } from "react-icons/fa6";
 import { GoDot } from "react-icons/go";
-import { useRides } from './RidesContext';
+import { useRides } from '../context/RidesContext';
 
 function RideDetails({ ride }) {
 
@@ -27,7 +27,7 @@ function RideDetails({ ride }) {
                                 <p className="text-lg font-bold">Rs. {ride.price}</p>&nbsp;
                                 <p>/seat</p></div>
                             <div>
-                                <div>{ride.NumberOfpassengers} seats available</div>
+                                <div>{ride.passengers} seats available</div>
                             </div>
                         </div>
                     </div>

@@ -1,15 +1,9 @@
 import React, { useState, useRef, useEffect } from "react"
 import { IoLocationOutline, IoCalendarOutline, IoPersonOutline } from "react-icons/io5";
 import { CiCirclePlus, CiCircleMinus } from "react-icons/ci";
+import places from "../data/places";
 
-const places = [
-    "Elante Mall", "Sector 17", "Rock Garden", "Tribune Chowk", "ISBT 43", "PEC",
-    "Sukhna Lake", "Palika Bazaar", "Shastri Market", "PU", "GMCH 32", "I.S Bindra Stadium", "Airport, Mohali",
-    "Railway Station", "Chhatbir Zoo", "Mansa Devi Temple", "Town Park, Panchkula", "Pinjore Garden",
-    "Best Price, Zirakpur", "Haldirams, Derabassi"
-];
-
-function SearchBar({ searchRides }) {
+function SearchBar ({ searchRides }) {
 
     const today = new Date().toISOString().split('T')[0];
 

@@ -1,7 +1,6 @@
 import React, {useState} from "react";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
-import SearchBar from "./SearchBar";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { IoCheckmarkCircleOutline, IoPeopleOutline, IoServerOutline } from 'react-icons/io5';
 import { useNavigate } from "react-router-dom";
 
@@ -33,10 +32,8 @@ function Home() {
 
     return (
         <div className="flex-col">
-            <div><Navbar /></div>
-
             <div className="relative">
-                <img src="home_img.jpg" alt="Background" className="w-full hidden md:block mt-1" style={{ height: 'auto' }} />
+                <img src="assets/home_img.jpg" alt="Background" className="w-full hidden md:block mt-1" style={{ height: 'auto' }} />
                 <div className="bg-emerald-100 h-80 md:hidden flex items-center justify-center text-center"></div>
                 <div className="absolute top-1/3 md:top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-cyan-900">
                     <h3 className="text-2xl md:text-4xl font-bold md:whitespace-nowrap mt-6">Discover pocket friendly rides!</h3>
@@ -82,7 +79,7 @@ function Home() {
 
             <div className="bg-emerald-400 p-4 mt-14 md:flex">
                 <div className="md:w-1/3 md:mr-4 mb-4 md:mb-0 md:flex md:items-center md:justify-center md:ml-20">
-                    <img src="img1.png" alt="offer" className="max-w-sm md:w-auto" />
+                    <img src="assets/img1.png" alt="offer" className="max-w-sm md:w-auto" />
                 </div>
 
                 <div className="md:w-5/12 md:flex md:flex-col md:justify-center md:ml-20">
@@ -99,7 +96,7 @@ function Home() {
             <div className="p-4 mt-14 md:flex">
 
                 <div className="md:hidden md:w-1/3 md:mr-4 mb-4 md:mb-0 md:flex md:items-center md:justify-center md:ml-20">
-                    <img src="img2.jpg" alt="offer" className="max-w-sm md:w-auto" />
+                    <img src="assets/img2.jpg" alt="offer" className="max-w-sm md:w-auto" />
                 </div>
 
                 <div className="md:w-5/12 md:flex md:flex-col md:justify-center md:ml-20">
@@ -113,7 +110,7 @@ function Home() {
                 </div>
 
                 <div className="hidden md:w-1/3 md:mr-4 mb-4 md:mb-0 md:flex md:items-center md:justify-center md:ml-20">
-                    <img src="img2.jpg" alt="offer" className="max-w-sm md:w-auto" />
+                    <img src="assets/img2.jpg" alt="offer" className="max-w-sm md:w-auto" />
                 </div>
             </div>
 

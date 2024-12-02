@@ -1,20 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
-import Cookies from "js-cookie";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { GrMoney, GrSecure, GrUserExpert } from "react-icons/gr";
 import { IoLocationOutline, IoCalendarOutline, IoTimeOutline, IoPersonOutline, IoPricetagOutline } from "react-icons/io5";
 import { CiCirclePlus, CiCircleMinus, CiUser } from "react-icons/ci";
 import { LiaCarSideSolid, LiaAngleDoubleRightSolid } from "react-icons/lia";
-import './App.css';
-import API_BASE_URL from './ApiBaseURL';
-
-const places = [
-    "Elante Mall", "Sector 17", "Rock Garden", "Tribune Chowk", "ISBT 43", "PEC",
-    "Sukhna Lake", "Palika Bazaar", "Shastri Market", "PU", "GMCH 32", "I.S Bindra Stadium", "Airport, Mohali",
-    "Railway Station", "Chhatbir Zoo", "Mansa Devi Temple", "Town Park, Panchkula", "Pinjore Garden",
-    "Best Price, Zirakpur", "Haldirams, Derabassi"
-];
+import places from "../data/places";
+import driverQuestions from "../data/driverFaq";
+import '../App.css';
+import Cookies from "js-cookie";
+import API_BASE_URL from '../ApiBaseURL';
 
 function OfferRide({userData}) {
 
@@ -125,45 +120,6 @@ function OfferRide({userData}) {
         }
     };
 
-    const driverQuestions = [
-        {
-            id: 1,
-            ques: "How do I sign up to become a driver?",
-            ans: "To sign up, simply visit our website and navigate to the driver registration page. Fill out the required information, which typically includes personal details, vehicle information, and any necessary documentation such as your driver's license and insurance. Once your information is submitted, our team will review your application and notify you of the next steps."
-        },
-
-        {
-            id: 2,
-            ques: "What are the requirements to become a driver?",
-            ans: "To become a driver with us, you must meet certain criteria, including possessing a valid driver's license, having a clean driving record with no major infractions, owning a registered and insured vehicle that meets our standards, and passing a background check. These requirements help ensure the safety and quality of our service."
-        },
-
-        {
-            id: 3,
-            ques: "How do I get paid?",
-            ans: "You'll receive payment for your services directly through our platform. Payments are typically processed on a weekly or bi-weekly basis, depending on your preference. You can choose to receive payments via direct deposit to your bank account or through other available payment methods."
-        },
-
-        {
-            id: 4,
-            ques: "Is there a rating system for drivers?",
-            ans: "Yes, we operate a rating system where riders can provide feedback on their experience with you after each ride. Your overall rating is an important factor in determining your reliability and professionalism as a driver, and it can affect your ability to receive ride requests and incentives."
-        },
-
-        {
-            id: 5,
-            ques: "What to do if a rider doesn't show up for their ride?",
-            ans: "In the event that a rider fails to show up for their scheduled ride, you can mark the ride as a no-show in the app. By doing so, you'll still receive a cancellation fee for your time and effort. This helps compensate you for the inconvenience of waiting for the rider."
-        },
-
-        {
-            id: 6,
-            ques: "How do I handle disputes with riders?",
-            ans: "If you encounter any disputes or issues with riders, you can report them through the app or by contacting our support team directly. We take all reports seriously and will investigate the matter thoroughly to ensure a fair resolution. Your safety and satisfaction are our top priorities, and we're here to support you every step of the way."
-        },
-
-    ];
-
     const [expandedItems, setExpandedItems] = useState({});
 
     const toggleContent = (id) => {
@@ -250,7 +206,6 @@ function OfferRide({userData}) {
 
     return (
         <div className="flex flex-col">
-            <div><Navbar /></div>
             <div className="bg-white h-20"></div>
 
             <div className="bg-emerald-100 p-10">
@@ -385,7 +340,7 @@ function OfferRide({userData}) {
                         </div>
 
                         <div className="md:mr-4 md:flex mt-5 md:ml-20">
-                            <img src="img3.png" alt="offer" className="md:h-80 md:w-auto h-60" />
+                            <img src="assets/img3.png" alt="offer" className="md:h-80 md:w-auto h-60" />
                         </div>
                     </div>
                 </div>
@@ -397,7 +352,7 @@ function OfferRide({userData}) {
                 <div className="md:flex mt-10 md:ml-10">
                     <div className="mb-10">
                         <video width="400" height="300" controls className="rounded-2xl">
-                            <source src="vid.mp4" type="video/mp4" />
+                            <source src="assets/vid.mp4" type="video/mp4" />
                         </video>
                     </div>
                     <div className="flex-col md:ml-10 px-4 md:w-1/2">
